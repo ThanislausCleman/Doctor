@@ -42,18 +42,19 @@ public class doctor {
 			preparedStmt.setString(2, name);
 			preparedStmt.setString(3, specialization);
 			
-			preparedStmt.setInt(5, Integer.parseInt(mobile));
+			preparedStmt.setInt(4, Integer.parseInt(mobile));
 			
-			preparedStmt.setDouble(7, Double.parseDouble(doctorFee));
+			preparedStmt.setDouble(5, Double.parseDouble(doctorFee));
 			
 
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
 
-			output = "Inserted doctor details successfully";
+			String newdoctor = readDoctor();
+			output = "{\"status\":\"success\", \"data\": \"" + newdoctor + "\"}";
 		} catch (Exception e) {
-			output = "Error while inserting";
+			output = "{\"status\":\"error\", \"data\":\"Error while inserting the doctor.\"}";
 			System.err.println(e.getMessage());
 		}
 
@@ -83,8 +84,8 @@ public class doctor {
 
 				// Prepare the html table to be displayed
 				
-				output = "<table border=\"1\"><tr><th>Doctor Name</th>" + "<th>Specialization</th><th>NIC</th>"
-						+ "<th>Mobile</th>" + "<th>Email</th>" + "<th>Doctor Fee</th></tr>";
+				output = "<table border=\"1\"><tr><th>Doctor Name</th>" + "<th>Specialization</th>"
+						+ "<th>Mobile</th>" +  "<th>Doctor Fee</th><th>update</th><th>Remove</th></tr>";
 
 				String query = "select *  from Doctor ";
 				
@@ -104,16 +105,17 @@ public class doctor {
 					
 
 					// Add into the html table
-					output += "<tr><td>" + Name + "</td>";
+					output += "<tr><td><input id='hidDocIDUpdate'name='hidDocIDUpdate' type='hidden'value='" + DID + "'>" + Name + "</td>";
 					output += "<td>" + Specialization + "</td>";
 					
 					output += "<td>" + Mobile + "</td>";
 				
 					output += "<td>" + DoctorFee + "</td>";
 					
+					//button
+					output += "<td><input name='btnUpdate' type='button'"+ "value='Update'"+"class='btnUpdate btn btn-secondary'></td>"
+							+"<td><input name='btnRemove' type='button'"+" value='Remove'"+"class='btnRemove btn btn-danger' data-did='"+ DID + "'>" + "</td></tr>";
 					
-
-					// buttons
 					
 				}
 				con.close();
@@ -155,17 +157,19 @@ public class doctor {
 				// binding values doctor table
 				preparedStmt.setString(1, name);
 				preparedStmt.setString(2, specialization);
-				preparedStmt.setInt(4, Integer.parseInt(mobile));
-				preparedStmt.setDouble(6, Double.parseDouble(doctorFee));
-				preparedStmt.setInt(7, Integer.parseInt(ID));
+				preparedStmt.setInt(3, Integer.parseInt(mobile));
+				preparedStmt.setDouble(4, Double.parseDouble(doctorFee));
+				preparedStmt.setInt(5, Integer.parseInt(ID));
 				
 				// execute the statement 
 				preparedStmt.execute(); 
 				con.close();
 
-				output = "Updated doctor details successfully";
+				String newdoctor = readDoctor();
+				output = "{\"status\":\"success\", \"data\": \"" + newdoctor + "\"}";
+				
 			} catch (Exception e) {
-				output = "Error while updating the doctor.";
+				output = "{\"status\":\"error\", \"data\":\"Error while inserting the doctor.\"}";
 				System.err.println(e.getMessage());
 			}
 
@@ -198,10 +202,11 @@ public class doctor {
 				preparedStmt.execute();
 				con.close();
 
-				output = "Deleted successfully";
+				String newdoctor = readDoctor();
+				output = "{\"status\":\"success\", \"data\": \"" + newdoctor + "\"}";
 
 			} catch (Exception e) {
-				output = "Error while deleting the item.";
+				output = "{\"status\":\"error\", \"data\":\"Error while inserting the doctor.\"}";
 				System.err.println(e.getMessage());
 			}
 

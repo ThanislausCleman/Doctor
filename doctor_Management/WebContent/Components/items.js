@@ -88,8 +88,8 @@ $(document).on("click",".btnUpdate",function(event) {
 			$("#hidDocIDSave").val($(this).closest("tr").find('#hidDocIDUpdate').val());
 			$("#Name").val($(this).closest("tr").find('td:eq(0)').text());
 			$("#Specialization").val($(this).closest("tr").find('td:eq(1)').text());
-			$("#Mobile").val($(this).closest("tr").find('td:eq(3)').text());
-			$("#DoctorFee").val($(this).closest("tr").find('td:eq(5)').text());
+			$("#Mobile").val($(this).closest("tr").find('td:eq(2)').text());
+			$("#DoctorFee").val($(this).closest("tr").find('td:eq(3)').text());
 		}); 
 
 
@@ -101,7 +101,7 @@ $(document).on("click", ".btnRemove", function(event)
 			{   
 				url : "doctorServiceAPI",   
 				type : "DELETE",   
-				data : "DID=" + $(this).data("DID"),   
+				data : "DID=" + $(this).data("did"),   
 				dataType : "text",   
 				complete : function(response, status)   
 				{    

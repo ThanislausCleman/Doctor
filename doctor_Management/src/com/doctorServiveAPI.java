@@ -58,7 +58,7 @@ public class doctorServiveAPI extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		Map paras = getParasMap(request); 
-		String output = itemObj.updateDoctor(paras.get("DID").toString(), 
+		String output = itemObj.updateDoctor(paras.get("hidDocIDUpdate").toString(), 
 				paras.get("name").toString(), 
 				paras.get("specialization").toString(),       
 				paras.get("mobile").toString(),       
