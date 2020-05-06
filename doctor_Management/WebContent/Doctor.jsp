@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col">
 
-				<h1>Item Management V9</h1>
+				<h1>Doctor Management </h1>
 				<form id="formItem" name="formItem" method="post" action="Doctor.jsp">
 					Doctor name: <input id="name" name="name" type="text" class="form-control form-control-sm">
 					<br> 
