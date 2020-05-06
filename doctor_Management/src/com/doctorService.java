@@ -44,9 +44,8 @@ public class doctorService {
 			@FormParam("Specialization") String specialization,
 			@FormParam("NIC") String nic,
 			@FormParam("Mobile") String mobile, 
-			@FormParam("Email") String email,
 			@FormParam("DoctorFee") String doctorFee) {
-		String output = docObj.insertDoctor(name, specialization, nic, mobile, email,doctorFee);
+		String output = docObj.insertDoctor(name, specialization, nic, mobile);
 		return output;
 	}
 	
@@ -69,12 +68,10 @@ public class doctorService {
 		String did = doctorObject.get("DID").getAsString();
 		String name = doctorObject.get("Name").getAsString();
 		String specialization = doctorObject.get("Specialization").getAsString();
-		String nic = doctorObject.get("NIC").getAsString();
-		String mobile = doctorObject.get("Mobile").getAsString();
-		String email = doctorObject.get("Email").getAsString();
+		String mobile = doctorObject.get("mobile").getAsString();
 		String doctorFee = doctorObject.get("DoctorFee").getAsString();
 
-		String output =  docObj.updateDoctor(did,name,specialization,nic,mobile,email,doctorFee);
+		String output =  docObj.updateDoctor(did,name,specialization,mobile, doctorFee );
 
 		return output;
 	}

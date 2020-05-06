@@ -27,12 +27,8 @@
 					<br> 
 					Doctor Specialization:<input id="specialization" name="specialization" type="text" class="form-control form-control-sm">
 					<br> 
-					Doctor NIC:<input id="nic" name="nic" type="text" class="form-control form-control-sm">
-					<br>
 					Doctor Mobile:<input id="mobile" name="mobile" type="text" class="form-control form-control-sm">
 					<br> 
-					Doctor email:<input id="email" name="email" type="text" class="form-control form-control-sm">
-					<br>
 					Doctor DoctorFee: <input id="doctorfee" name="doctorfee" type="text" class="form-control form-control-sm">
 					<br> 
 					<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary"> 

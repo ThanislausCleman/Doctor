@@ -44,9 +44,9 @@ public class doctorServiveAPI extends HttpServlet {
 		
 		String output =itemObj.insertDoctor(request.getParameter("name"),
 				request.getParameter("specialization"),
-				request.getParameter("nic"),
+				
 				request.getParameter("mobile"),
-				request.getParameter("email"),
+				
 				request.getParameter("doctorFee"));
 		
 		response.getWriter().write(output);
@@ -61,9 +61,7 @@ public class doctorServiveAPI extends HttpServlet {
 		String output = itemObj.updateDoctor(paras.get("DID").toString(), 
 				paras.get("name").toString(), 
 				paras.get("specialization").toString(),       
-				paras.get("nic").toString(), 
 				paras.get("mobile").toString(),       
-				paras.get("email").toString(),
 				paras.get("doctorFee").toString()); 
 		
 		response.getWriter().write(output); 

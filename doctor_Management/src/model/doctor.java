@@ -20,7 +20,7 @@ public class doctor {
 	
 	//Insert doctor details into doctor table
 	// Insert
-	public String insertDoctor( String name, String specialization, String nic, String mobile, String email, String doctorFee) {
+	public String insertDoctor( String name, String specialization, String mobile, String doctorFee) {
 		String output = "";
 
 		try {
@@ -32,8 +32,8 @@ public class doctor {
 			}
 
 			// create a prepared statement for insert values into database 
-			String query = "insert into Doctor(`DID`,`Name`,`Specialization`,`NIC`,`Mobile`,`Email`, `DoctorFee`)"
-					+ " values (?, ?, ?, ?, ?,?,?)";
+			String query = "insert into Doctor(`DID`,`Name`,`Specialization`,`Mobile`, `DoctorFee`)"
+					+ " values (?, ?, ?,?,?)";
 
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 
@@ -41,9 +41,9 @@ public class doctor {
 			preparedStmt.setInt(1, 0);
 			preparedStmt.setString(2, name);
 			preparedStmt.setString(3, specialization);
-			preparedStmt.setString(4, nic);
+			
 			preparedStmt.setInt(5, Integer.parseInt(mobile));
-			preparedStmt.setString(6, email);
+			
 			preparedStmt.setDouble(7, Double.parseDouble(doctorFee));
 			
 
@@ -96,9 +96,9 @@ public class doctor {
 					String DID = Integer.toString(rs.getInt("DID"));
 					String Name = rs.getString("Name");
 					String Specialization = rs.getString("Specialization");
-					String NIC = rs.getString("NIC");
+					
 					String Mobile = Integer.toString(rs.getInt("Mobile"));
-					String Email = rs.getString("Email");
+					
 					String DoctorFee = Double.toString(rs.getDouble("DoctorFee"));
 					
 					
@@ -106,9 +106,9 @@ public class doctor {
 					// Add into the html table
 					output += "<tr><td>" + Name + "</td>";
 					output += "<td>" + Specialization + "</td>";
-					output += "<td>" + NIC + "</td>";
+					
 					output += "<td>" + Mobile + "</td>";
-					output += "<td>" + Email + "</td>";
+				
 					output += "<td>" + DoctorFee + "</td>";
 					
 					
@@ -136,7 +136,7 @@ public class doctor {
 		//Update doctor details
 		// update
 
-		public String updateDoctor(String ID, String name, String specialization, String nic, String mobile, String email, String doctorFee) {
+		public String updateDoctor(String ID, String name, String specialization, String mobile,String doctorFee) {
 			String output = "";
 
 			try {
@@ -148,16 +148,14 @@ public class doctor {
 				}
 
 				// create a prepared statement
-				String query = "UPDATE Doctor SET Name=?,Specialization=?,NIC=?,Mobile=?,Email=?, DoctorFee=? WHERE DID=?";
+				String query = "UPDATE Doctor SET Name=?,Specialization=?,Mobile=?, DoctorFee=? WHERE DID=?";
 
 				PreparedStatement preparedStmt = con.prepareStatement(query);
 
 				// binding values doctor table
 				preparedStmt.setString(1, name);
 				preparedStmt.setString(2, specialization);
-				preparedStmt.setString(3,nic);
 				preparedStmt.setInt(4, Integer.parseInt(mobile));
-				preparedStmt.setString(5, email);
 				preparedStmt.setDouble(6, Double.parseDouble(doctorFee));
 				preparedStmt.setInt(7, Integer.parseInt(ID));
 				

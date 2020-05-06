@@ -88,9 +88,7 @@ $(document).on("click",".btnUpdate",function(event) {
 			$("#hidDocIDSave").val($(this).closest("tr").find('#hidDocIDUpdate').val());
 			$("#Name").val($(this).closest("tr").find('td:eq(0)').text());
 			$("#Specialization").val($(this).closest("tr").find('td:eq(1)').text());
-			$("#NIC").val($(this).closest("tr").find('td:eq(2)').text());
 			$("#Mobile").val($(this).closest("tr").find('td:eq(3)').text());
-			$("#Email").val($(this).closest("tr").find('td:eq(4)').text());
 			$("#DoctorFee").val($(this).closest("tr").find('td:eq(5)').text());
 		}); 
 
@@ -166,16 +164,6 @@ function validateItemForm() {
 		return "Insert Doctor Specialization."; 
 		}
 	
-	if ($("#NIC").val().trim() == "") 
-	{
-		return "Insert Doctor NIC.";
-		}
-	
-	var tmpnic = $("#NIC").val().trim();  
-	if (!$.isNumeric(tmpnic))  
-	{   
-		return "Insert a numerical value for Mobile."; 
-		} 
 	
 	
 	if ($("#Mobile").val().trim() == "") 
@@ -190,10 +178,7 @@ function validateItemForm() {
 		return "Insert a numerical value for Mobile."; 
 		} 
 	
-	if ($("#Email").val().trim() == "") 
-	{
-		return "Insert Doctor Email.";
-		}
+	
 	
 	if ($("#DoctorFee").val().trim() == "") 
 	{
